@@ -4,8 +4,8 @@ title: notes
 permalink: /projects/
 description: I write down stuf that I must know so I don't forget it :)
 nav: true
-nav_order: 3
-display_categories: [work, fun]
+nav_order: 4
+display_categories:
 horizontal: false
 ---
 
