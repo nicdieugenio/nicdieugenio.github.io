@@ -16,7 +16,6 @@
       "url": "https://www.fisica.unimib.it/it/didattica/corsi-studio/corso-laurea-magistrale-fisica",
       "area": "Physics",
       "studyType": "Master's Degree'",
-      "startDate": "2020",
       "endDate": "2023",
       "courses": ["Master's Thesis: Machine Learning Methods for Approximating the Microstructural Evolution in Two-Phase Systems"]
     },
@@ -26,7 +25,6 @@
       "url": "https://www.polytechnique.edu/",
       "area": "Physics",
       "studyType": "Erasmus Period",
-      "startDate": "2022",
       "endDate": "2022",
       "courses": ["Attended classes in both Cycle Ingénieur and in Master of Science"]
     },
@@ -36,7 +34,6 @@
       "url": "https://www.fisica.unimib.it/it/didattica/corsi-studio/corso-laurea-magistrale-fisica",
       "area": "Physics",
       "studyType": "Bachelor's Degree'",
-      "startDate": "2016",
       "endDate": "2020",
       "courses": ["Bachelor's Thesis: Atomic-Force Microscopy Characterization of Epitaxial Nanostructures"]
     }
