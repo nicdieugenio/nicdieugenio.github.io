@@ -1,3 +1,0 @@
-I am a PhD student in Condensed Matter Physics at Politecnico di Torino, Italy. My research deals with the implementation of Machine Learning Potentials and Density Functional Theory to improve Molecular Dynamics simulations of collision cascades in complex superconducting materials. I am also working on Time-Dependent Ginzburg-Landau simulations of vortex lattice phase transitions.
-
-During my Master's thesis at the University of Milano-Bicocca, I worked on the application of Machine Learning methods to approximate the microstructural evolution in two-phase systems, employing a Convolutional Recurrent Neural Network approach.
