@@ -2,7 +2,7 @@
 layout: page
 title: notes
 permalink: /projects/
-description: I write down stuf that I must know so I don't forget it :)
+description: I write down things that I must know so I don't forget it :)
 nav: true
 nav_order: 4
 display_categories:
