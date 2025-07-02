@@ -1,0 +1,11 @@
+<div class="pub-entry" style="margin-bottom: 2rem;">
+  {% if entry.image %}
+    <img src="{{ entry.image }}" alt="{{ entry.title }}" style="max-width: 200px; margin-bottom: 0.5rem;">
+  {% endif %}
+  <p>
+    <strong>{{ entry.title }}</strong><br>
+    {{ entry.author }}<br>
+    <em>{{ entry.year }}</em>
+  </p>
+</div>
+

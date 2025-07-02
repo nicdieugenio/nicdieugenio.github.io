@@ -8,6 +8,7 @@ nav_order: 2
 ---
 
 <div class="publications">
-  {% bibliography --template bibliography %}
+  {% bibliography --template bibliography_entry %}
 </div>
+
 
