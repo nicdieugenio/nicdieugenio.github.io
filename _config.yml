@@ -292,8 +292,8 @@ display_categories: ["blockquotes"] # these categories will be displayed on the 
 # -----------------------------------------------------------------------------
 
 scholar:
-  last_name: 
-  first_name:
+  last_name: Di Eugenio
+  first_name: Niccolò
 
   style: apa
   locale: en
