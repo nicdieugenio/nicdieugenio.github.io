@@ -1,11 +1,25 @@
-<div class="pub-entry" style="margin-bottom: 2rem;">
+<div class="pub-entry" style="margin-bottom: 2rem; overflow: auto;">
   {% if entry.image %}
-    <img src="{{ entry.image }}" alt="{{ entry.title }}" style="max-width: 200px; margin-bottom: 0.5rem;">
+    <img 
+      src="{{ '/assets/img/' | append: entry.image }}" 
+      alt="{{ entry.title }}" 
+      style="max-width: 200px; float: left; margin-right: 1rem; margin-bottom: 0.5rem;"
+    >
   {% endif %}
-  <p>
-    <strong>{{ entry.title }}</strong><br>
-    {{ entry.author }}<br>
-    <em>{{ entry.year }}</em>
-  </p>
+  
+  <div style="overflow: hidden;">
+    <p style="margin: 0;">
+      <strong>{{ entry.title }}</strong><br>
+      {{ entry.author }}<br>
+      {% if entry.journal %}
+        <em>{{ entry.journal }}</em>{% if entry.volume %}, Vol. {{ entry.volume }}{% endif %}{% if entry.number %}({{ entry.number }}){% endif %}, {{ entry.year }}.<br>
+      {% else %}
+        <em>{{ entry.year }}</em><br>
+      {% endif %}
+      {% if entry.url %}
+        <a href="{{ entry.url }}" target="_blank" rel="noopener noreferrer">[Link]</a>
+      {% endif %}
+    </p>
+  </div>
 </div>
 
