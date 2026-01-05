@@ -1,0 +1,22 @@
+<div class="pub-entry" style="display: flex; margin-bottom: 2rem; align-items: flex-start;">
+  {% if entry.image %}
+    <img src="{{ site.baseurl }}/assets/img/{{ entry.image }}" alt="{{ entry.title }}" style="max-width: 150px; margin-right: 1rem; border: 1px solid #ccc;">
+  {% endif %}
+  <div style="flex: 1;">
+    <strong>
+      {% if entry.url %}
+        <a href="{{ entry.url }}" target="_blank" rel="noopener noreferrer">{{ entry.title }}</a>
+      {% else %}
+        {{ entry.title }}
+      {% endif %}
+    </strong><br>
+    {{ entry.author }}<br>
+    <em>{{ entry.journal }}</em>{% if entry.month %}, {{ entry.month | capitalize }}{% endif %} {{ entry.year }}<br>
+    {% if entry.url %}
+      <div style="margin-top: 0.5rem; padding: 0.5rem; border: 1px solid #ddd; background: #f9f9f9; display: inline-block;">
+        <a href="{{ entry.url }}" target="_blank" rel="noopener noreferrer">View Paper</a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+

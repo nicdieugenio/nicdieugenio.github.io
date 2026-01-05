@@ -1,47 +1,19 @@
 ---
 layout: page
 permalink: /repositories/
-title: repositories
-description: Edit the `_data/repositories.yml` and change the `github_users` and `github_repos` lists to include your own GitHub profile and repositories.
-nav: false
-nav_order: 4
+title: repos
+description: GitHub repositories of my PhD projects 
+nav: true
+nav_order: 5 
 ---
 
-## GitHub users
-
-{% if site.data.repositories.github_users %}
-
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% for user in site.data.repositories.github_users %}
-    {% include repository/repo_user.liquid username=user %}
-  {% endfor %}
-</div>
-
----
-
-{% if site.repo_trophies.enabled %}
-{% for user in site.data.repositories.github_users %}
-{% if site.data.repositories.github_users.size > 1 %}
-
-  <h4>{{ user }}</h4>
-  {% endif %}
-  <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% include repository/repo_trophies.liquid username=user %}
+<div class="projects">
+    <h3>💾 YBCO Interatomic Potentials</h3>
+    <p>
+      <strong><a href="https://github.com/nicdieugenio/YBCO_ACE_MACE" target="_blank">Repo</a></strong> <br>
+      <strong>Keywords:</strong> Machine Learning, Interatomic Potentials, DFT, Molecular Dynamics
+    </p>
+    <p>
+      Machine-Learned Interatomic Potentials for YBa2Cu3O{7-x} (YBCO), trained using ACE and MACE on DFT data from CP2K.
+    </p>
   </div>
-
----
-
-{% endfor %}
-{% endif %}
-{% endif %}
-
-## GitHub Repositories
-
-{% if site.data.repositories.github_repos %}
-
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% for repo in site.data.repositories.github_repos %}
-    {% include repository/repo.liquid repository=repo %}
-  {% endfor %}
-</div>
-{% endif %}

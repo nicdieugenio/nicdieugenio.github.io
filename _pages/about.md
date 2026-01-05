@@ -18,6 +18,19 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I am a PhD student in Condensed Matter Physics at Politecnico di Torino, Italy. My research deals with the implementation of Machine Learning Potentials trained on Density Functional Theory simulations, to improve Molecular Dynamics simulations of collision cascades in complex superconducting materials, mainly in nuclear fusion frameworks. Our goal is to obtain an atomistic-based description of radiation damage, investigating the role of defects and computing thermodynamic properties. I am also working on Time-Dependent Ginzburg-Landau simulations of vortex lattice phase transitions.
+PhD student at Politecnico di Torino with a Master’s in Condensed Matter Physics.
 
-During my Master's thesis at the University of Milano-Bicocca, I worked on the application of Machine Learning methods to approximate the microstructural evolution in two-phase systems, employing a Convolutional Recurrent Neural Network approach.
+My research deals with the development and implementation of Machine Learning Interatomic Potentials, trained on data obtained from Density Functional Theory simulations, to improve Molecular Dynamics simulations of collision cascades in complex superconducting materials, mainly in nuclear fusion frameworks. This leads to an atomistic-based description of radiation damage, investigating bulk, defect, and thermodynamic properties.
+
+I am also deeply interested in statistical mechanics problems and phase transitions. 
+
+<style>
+  .profile img {
+    width: 100% !important; /* Makes image take up the full column width */
+    max-width: 400px !important; /* Adjust this number to your liking */
+  }
+  .profile {
+    width: 45% !important; /* Increases the size of the container itself */
+  }
+</style>
+
