@@ -18,11 +18,13 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-PhD student at Politecnico di Torino with a Master’s in Condensed Matter Physics.
+I am a PhD student in Physics at Politecnico di Torino and a Visiting Researcher at the Max Planck Institute for Polymer Research in Mainz. 
 
-My research deals with the development and implementation of Machine Learning Interatomic Potentials, trained on data obtained from Density Functional Theory simulations, to improve Molecular Dynamics simulations of collision cascades in complex superconducting materials, mainly in nuclear fusion frameworks. This leads to an atomistic-based description of radiation damage, investigating bulk, defect, and thermodynamic properties.
+My research addressed the atomistic modeling of Rare-Earth Barium Copper Oxide superconductors, which form the functional layers of High-Temperature Superconducting magnets in next-generation fusion reactors. Because their superconducting properties are plagued by crystal defects and depend strongly on oxygen stoichiometry, I develop and implement Machine Learning Interatomic Potentials to investigate the microscopic features of radiation-induced damage, to reproduce key thermodynamic and defect properties, and to perform large-scale collision cascades Molecular Dynamics simulations in fusion-like environments.
 
-I am also deeply interested in statistical mechanics problems and phase transitions. 
+My current work deals with distillation neural networks, a teacher-student training framework in which the latent knowledge from a teacher model augments the student model training. This establishes a practical method for performing predictive, faster, large-scale simulations of fusion-relevant collision cascades and defect evolution.
+
+Beyond radiation damage, I am deeply interested in statistical mechanics and the physics of phase transitions.
 
 <style>
   .profile img {

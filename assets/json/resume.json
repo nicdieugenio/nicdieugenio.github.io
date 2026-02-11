@@ -8,7 +8,17 @@
       "studyType": "PhD",
       "startDate": "2023",
       "endDate": "PRESENT",
-      "courses": ["Development of Machine Learning Potentials models in complex superconducting materials to improve Molecular Dynamics simulations of collision cascades in fusion applications","Machine-Learning methods for radiation environment estimates in nuclear fusion reactors"]
+      "courses": ["Thesis Title: Machine Learning Methods for Radiation Damage Analysis in High-Temperature Superconductors for Fusion Applications"]
+    },
+    {
+      "institution": "Max Planck Institute for Polymer Research",
+      "location": "Mainz, Germany",
+      "url": "https://www.mpip-mainz.mpg.de/en/home",
+      "area": "Physics",
+      "studyType": "Research Visit",
+      "startDate": "MARCH 2026",
+      "endDate": "OCTOBER 2026",
+      "courses": ["Project: Distillation neural networks for collision cascades simulations in High Temperature Superconductors for fusion"]
     },
     {
       "institution": "École Polytechnique",
