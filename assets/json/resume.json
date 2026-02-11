@@ -8,7 +8,7 @@
       "studyType": "PhD",
       "startDate": "2023",
       "endDate": "PRESENT",
-      "courses": ["Thesis Title: Machine Learning Methods for Radiation Damage Analysis in High-Temperature Superconductors for Fusion Applications"]
+      "courses": ["Thesis Title: Machine Learning Methods for Radiation Damage Analysis in High-Temperature Superconductors for Fusion Applications \n Supervisors: Prof. Francesco Laviano, Dott. Daniele Torsello"]
     },
     {
       "institution": "Max Planck Institute for Polymer Research",
@@ -16,9 +16,9 @@
       "url": "https://www.mpip-mainz.mpg.de/en/home",
       "area": "Physics",
       "studyType": "Research Visit",
-      "startDate": "MARCH 2026",
-      "endDate": "OCTOBER 2026",
-      "courses": ["Project: Distillation neural networks for collision cascades simulations in High Temperature Superconductors for fusion"]
+      "startDate": "2026",
+      "endDate": "",
+      "courses": ["Project: Distillation neural networks for collision cascades simulations in High Temperature Superconductors for fusion \n Supervisor: Prof. Gábor Csányi"]
     },
     {
       "institution": "École Polytechnique",
@@ -38,7 +38,7 @@
       "studyType": "Master's Degree'",
       "startDate": "2020",
       "endDate": "2023",
-      "courses": ["Master's Thesis: Machine Learning Methods for Approximating the Microstructural Evolution in Two-Phase Systems"]
+      "courses": ["Master's Thesis: Machine Learning Methods for Approximating the Microstructural Evolution in Two-Phase Systems \n Supervisors: Prof. Francesco Montalenti, Dott. Roberto Bergamaschini"]
     },
     {
       "institution": "Università degli Studi di Milano-Bicocca",
@@ -48,7 +48,7 @@
       "studyType": "Bachelor's Degree'",
       "startDate": "2016",
       "endDate": "2020",
-      "courses": ["Bachelor's Thesis: Atomic-Force Microscopy Characterization of Epitaxial Nanostructures"]
+      "courses": ["Bachelor's Thesis: Atomic-Force Microscopy Characterization of Epitaxial Nanostructures \n Supervisors: Prof. Stefano Sanguinetti, Prof. Marco Bernasconi"]
     }
   ]
 }
