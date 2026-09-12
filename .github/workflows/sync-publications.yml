@@ -1,0 +1,54 @@
+name: Sync publications
+
+# Checks ORCID (published papers, fed automatically by Crossref and IRIS) and
+# arXiv (preprints) once a week, and opens a pull request when something new
+# turns up. Nothing reaches the live site until the pull request is merged.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # every Monday, 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Set up Python 🐍
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Fetch new publications 📚
+        run: python3 bin/sync_publications.py --report /tmp/sync-report.md
+
+      - name: Build the pull request body 📝
+        id: body
+        run: |
+          {
+            echo 'text<<PR_BODY_EOF'
+            cat /tmp/sync-report.md
+            echo ''
+            echo '---'
+            echo 'Opened automatically by `.github/workflows/sync-publications.yml`.'
+            echo 'Existing entries are never modified, so hand-curated `preview`,'
+            echo '`selected` and `abbr` fields are safe.'
+            echo 'PR_BODY_EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Open a pull request 🚀
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Add new publications from ORCID and arXiv"
+          branch: chore/sync-publications
+          delete-branch: true
+          title: "New publications found"
+          body: ${{ steps.body.outputs.text }}
+          add-paths: |
+            _bibliography/papers.bib
