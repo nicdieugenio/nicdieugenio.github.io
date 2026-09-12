@@ -1,0 +1,34 @@
+{% comment %}
+  Photo gallery for blog posts.
+
+  Usage inside a post (paths are relative to the site root):
+
+    {% include gallery.liquid cols=3 images="
+      assets/img/blog/trip/one.jpg | caption for one
+      assets/img/blog/trip/two.jpg
+      assets/img/blog/trip/three.jpg | caption for three
+    " %}
+
+  cols defaults to 2. Images zoom on click when site.enable_medium_zoom is true.
+{% endcomment %}
+
+{% assign gallery_cols = include.cols | default: 2 %}
+{% assign gallery_rows = include.images | strip | newline_to_br | split: '<br />' %}
+
+<div class="post-gallery cols-{{ gallery_cols }}">
+  {% for row in gallery_rows %}
+    {% assign entry = row | strip %}
+    {% if entry == '' %}
+      {% continue %}
+    {% endif %}
+    {% assign parts = entry | split: '|' %}
+    {% assign src = parts[0] | strip %}
+    {% assign caption = parts[1] | strip %}
+    <figure>
+      <img src="{{ src | relative_url }}" alt="{% if caption != blank %}{{ caption }}{% else %}{{ page.title }}{% endif %}" loading="lazy">
+      {% if caption != blank %}
+        <figcaption>{{ caption }}</figcaption>
+      {% endif %}
+    </figure>
+  {% endfor %}
+</div>

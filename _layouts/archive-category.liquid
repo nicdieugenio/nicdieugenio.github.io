@@ -2,29 +2,25 @@
 layout: default
 ---
 <div class="post">
-  <header class="post-header">
-    <h1 class="post-title"><i class="fa-solid fa-tag fa-sm"></i> {{ page.title }}</h1>
-    <p class="post-description">an archive of posts in this category</p>
-  </header>
+  <div class="header-bar">
+    <h1><i class="fa-solid fa-tag fa-sm"></i> {{ page.title }}</h1>
+    <h2>
+      {{ page.posts.size }} post{% if page.posts.size != 1 %}s{% endif %} in this category
+    </h2>
+  </div>
 
-  <article class="archive">
-    <div class="table-responsive">
-      <table class="table table-sm table-borderless">
-        {% for post in page.posts %}
-          <tr>
-            <th scope="row">{{ post.date | date: '%b %d, %Y' }}</th>
-            <td>
-              {% if post.redirect == blank %}
-                <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-              {% elsif post.redirect contains '://' %}
-                <a class="post-link" href="{{ post.redirect }}" target="_blank">{{ post.title }}</a>
-              {% else %}
-                <a class="post-link" href="{{ post.redirect | relative_url }}">{{ post.title }}</a>
-              {% endif %}
-            </td>
-          </tr>
-        {% endfor %}
-      </table>
-    </div>
-  </article>
+  <div class="blog-filters">
+    <a class="blog-filter" href="{{ '/blog/' | relative_url }}">all</a>
+    {% for category in site.display_categories %}
+      {% if site.categories[category].size > 0 %}
+        {% assign cat_slug = category | slugify %}
+        {% assign page_slug = page.title | slugify %}
+        <a class="blog-filter{% if cat_slug == page_slug %} active{% endif %}" href="{{ cat_slug | prepend: '/blog/category/' | relative_url }}">
+          {{- category -}}
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% include blog_grid.liquid posts=page.posts %}
 </div>

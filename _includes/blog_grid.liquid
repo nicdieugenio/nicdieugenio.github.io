@@ -1,0 +1,57 @@
+{% comment %}
+  Card grid for blog posts. Usage: {% include blog_grid.liquid posts=some_post_list %}
+  Posts with a `thumbnail:` render as image cards (trip photos, galleries);
+  posts without one render as compact text cards (notes, essays).
+{% endcomment %}
+
+<div class="blog-grid">
+  {% for post in include.posts %}
+    {% if post.redirect == blank %}
+      {% assign post_link = post.url | relative_url %}
+      {% assign post_target = '_self' %}
+    {% elsif post.redirect contains '://' %}
+      {% assign post_link = post.redirect %}
+      {% assign post_target = '_blank' %}
+    {% else %}
+      {% assign post_link = post.redirect | relative_url %}
+      {% assign post_target = '_self' %}
+    {% endif %}
+
+    {% if post.external_source == blank %}
+      {% assign read_time = post.content | number_of_words | divided_by: 180 | plus: 1 %}
+    {% else %}
+      {% assign read_time = post.feed_content | strip_html | number_of_words | divided_by: 180 | plus: 1 %}
+    {% endif %}
+
+    <article class="blog-card{% if post.thumbnail %} has-img{% endif %}">
+      <a href="{{ post_link }}" target="{{ post_target }}">
+        {% if post.thumbnail %}
+          <div class="blog-card-img" style="background-image: url('{{ post.thumbnail | relative_url }}');"></div>
+        {% endif %}
+        <div class="blog-card-body">
+          {% if post.categories.size > 0 %}
+            <span class="blog-card-kicker">{{ post.categories | first }}</span>
+          {% endif %}
+          <h3 class="blog-card-title">
+            {{ post.title }}
+            {% if post.redirect contains '://' %}
+              <i class="fa-solid fa-arrow-up-right-from-square fa-2xs"></i>
+            {% endif %}
+          </h3>
+          {% if post.description %}
+            <p class="blog-card-desc">{{ post.description }}</p>
+          {% endif %}
+          <p class="post-meta">
+            {{ post.date | date: '%b %-d, %Y' }}
+            {% unless post.categories contains 'travel' %}
+              &nbsp;&middot;&nbsp; {{ read_time }} min read
+            {% endunless %}
+            {% if post.external_source %}
+              &nbsp;&middot;&nbsp; {{ post.external_source }}
+            {% endif %}
+          </p>
+        </div>
+      </a>
+    </article>
+  {% endfor %}
+</div>
