@@ -2,7 +2,9 @@
   Photo gallery for blog posts. Two ways to use it.
 
   1. Point it at a folder and it picks up every image in there, in filename
-     order. Thumbnails in <folder>/thumbs/ are used for the grid when present,
+     order. A file with "cover" in its name is skipped, so it can be the post
+     thumbnail without joining the set.
+     Thumbnails in <folder>/thumbs/ are used for the grid when present,
      with the full-size file loaded only when a photo is opened:
 
        {% include gallery.liquid folder="assets/img/blog/aps-denver-2026" cols=3 %}
@@ -39,7 +41,8 @@
     {% endfor %}
     {% for f in shots %}
       {% if f.path contains folder %}
-        {% unless f.path contains '/thumbs/' %}
+        {% comment %} thumbs/ holds grid copies; a "cover" file is the card image. {% endcomment %}
+        {% unless f.path contains '/thumbs/' or f.name contains 'cover' %}
           {% assign rel = f.path | remove_first: '/' %}
           {% assign thumb = folder | append: '/thumbs/' | append: f.name %}
           <figure>
