@@ -59,7 +59,13 @@
           <!-- Other pages -->
           {% assign sorted_pages = site.pages | sort: 'nav_order' %}
           {% for p in sorted_pages %}
-            {% if p.nav and p.autogen == null %}
+            {% comment %} Hide the blog until it actually has posts. {% endcomment %}
+            {% assign hide_empty_blog = false %}
+            {% comment %} paginate-v2 rewrites the permalink to /blog/index.html, so match the title. {% endcomment %}
+            {% if p.title == 'blog' and site.posts.size == 0 %}
+              {% assign hide_empty_blog = true %}
+            {% endif %}
+            {% if p.nav and p.autogen == null and hide_empty_blog == false %}
               {% if p.dropdown %}
                 {% assign has_active_child = false %}
                 {% for child in p.children %}
