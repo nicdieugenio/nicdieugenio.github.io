@@ -49,4 +49,16 @@ jobs:
         with:
           fail: true
           # removed md files that include liquid tags
-          args: --user-agent 'curl/7.54' --exclude-path README.md --exclude-path _pages/404.md --exclude-path _pages/blog.md --exclude-path _posts/2018-12-22-distill.md --verbose --no-progress './**/*.md' './**/*.html'
+          # Scoped to content we actually write. The theme's own docs, the generated
+          # Lighthouse reports, the plotly demo and the committed virtualenvs are full
+          # of dead and bot-blocked links that have nothing to do with this site.
+          args: >-
+            --user-agent 'curl/7.54'
+            --exclude-path README.md --exclude-path INSTALL.md --exclude-path CUSTOMIZE.md
+            --exclude-path FAQ.md --exclude-path CONTRIBUTING.md
+            --exclude-path _pages/404.md --exclude-path _pages/blog.md
+            --exclude-path lighthouse_results --exclude-path readme_preview
+            --exclude-path assets/plotly/demo.html
+            --exclude-path venv --exclude-path ovito-env --exclude-path vendor
+            --exclude 'open\.spotify\.com'
+            --verbose --no-progress './**/*.md' './**/*.html'

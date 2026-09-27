@@ -7,7 +7,7 @@ categories: writing
 giscus_comments: false
 related_posts: false
 # thumbnail: assets/img/blog/essay-cover.jpg   # optional; shows as the card image
-# redirect: https://example.com/my-piece       # use this if the piece lives elsewhere
+# redirect: <full url>                        # use this if the piece lives elsewhere
 ---
 
 Plain prose. If the piece was published somewhere else, you don't have to copy
