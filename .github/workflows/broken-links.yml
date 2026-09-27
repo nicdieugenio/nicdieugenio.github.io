@@ -48,10 +48,12 @@ jobs:
         uses: lycheeverse/lychee-action@v1.9.0
         with:
           fail: true
-          # removed md files that include liquid tags
-          # Scoped to content we actually write. The theme's own docs, the generated
-          # Lighthouse reports, the plotly demo and the committed virtualenvs are full
-          # of dead and bot-blocked links that have nothing to do with this site.
+          # Scoped to the prose we actually write.
+          #   _includes  - Liquid templates; href="{{ ... }}" is not a real path.
+          #                The rendered site is checked by broken-links-site.yml.
+          #   theme docs, lighthouse_results, plotly demo, committed virtualenvs
+          #              - full of dead and bot-blocked links unrelated to this site.
+          #   open.spotify.com - answers 404 to any non-browser user agent.
           args: >-
             --user-agent 'curl/7.54'
             --exclude-path README.md --exclude-path INSTALL.md --exclude-path CUSTOMIZE.md
@@ -60,5 +62,6 @@ jobs:
             --exclude-path lighthouse_results --exclude-path readme_preview
             --exclude-path assets/plotly/demo.html
             --exclude-path venv --exclude-path ovito-env --exclude-path vendor
+            --exclude-path _includes --exclude-path _site --exclude-path node_modules
             --exclude 'open\.spotify\.com'
             --verbose --no-progress './**/*.md' './**/*.html'
