@@ -27,6 +27,19 @@
       ]
     },
     {
+      "institution": "University of Cambridge",
+      "location": "Cambridge, UK",
+      "url": "https://www.cam.ac.uk/",
+      "area": "Physics",
+      "studyType": "Research Visit",
+      "startDate": "2025",
+      "endDate": "2025",
+      "courses": [
+        "Project: Machine-Learning Interatomic Potentials for High-Temperature Superconductors",
+        "Supervisor: Prof. Gábor Csányi"
+      ]
+    },
+    {
       "institution": "École Polytechnique",
       "location": "Palaiseau, France",
       "url": "https://www.polytechnique.edu/",
