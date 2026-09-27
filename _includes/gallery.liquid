@@ -1,34 +1,79 @@
 {% comment %}
-  Photo gallery for blog posts.
+  Photo gallery for blog posts. Two ways to use it.
 
-  Usage inside a post (paths are relative to the site root):
+  1. Point it at a folder and it picks up every image in there, in filename
+     order. Thumbnails in <folder>/thumbs/ are used for the grid when present,
+     with the full-size file loaded only when a photo is opened:
 
-    {% include gallery.liquid cols=3 images="
-      assets/img/blog/trip/one.jpg | caption for one
-      assets/img/blog/trip/two.jpg
-      assets/img/blog/trip/three.jpg | caption for three
-    " %}
+       {% include gallery.liquid folder="assets/img/blog/aps-denver-2026" cols=3 %}
 
-  cols defaults to 2. Images zoom on click when site.enable_medium_zoom is true.
+  2. List the files yourself, when you want captions. Anything after a "|"
+     becomes the caption:
+
+       {% include gallery.liquid cols=2 images="
+         assets/img/blog/trip/one.jpg | the Rhine, early April
+         assets/img/blog/trip/two.jpg
+       " %}
+
+  cols defaults to 2. Clicking a photo opens it full-size (medium-zoom), as
+  long as site.enable_medium_zoom is on.
 {% endcomment %}
 
 {% assign gallery_cols = include.cols | default: 2 %}
-{% assign gallery_rows = include.images | strip | newline_to_br | split: '<br />' %}
 
 <div class="post-gallery cols-{{ gallery_cols }}">
-  {% for row in gallery_rows %}
-    {% assign entry = row | strip %}
-    {% if entry == '' %}
-      {% continue %}
-    {% endif %}
-    {% assign parts = entry | split: '|' %}
-    {% assign src = parts[0] | strip %}
-    {% assign caption = parts[1] | strip %}
-    <figure>
-      <img src="{{ src | relative_url }}" alt="{% if caption != blank %}{{ caption }}{% else %}{{ page.title }}{% endif %}" loading="lazy">
-      {% if caption != blank %}
-        <figcaption>{{ caption }}</figcaption>
+  {% if include.folder %}
+    {% comment %}
+      No stripping here: remove_first drops the first "/" anywhere in the string,
+      which would mangle "assets/img/..." into "assetsimg/...". A substring match
+      works whether or not the caller wrote a leading slash.
+    {% endcomment %}
+    {% assign folder = include.folder | strip %}
+    {% assign shots = site.static_files | sort: 'path' %}
+    {% comment %} where_exp cannot see `folder`, so filter with a plain loop. {% endcomment %}
+    {% assign thumb_index = '' %}
+    {% for f in shots %}
+      {% if f.path contains folder and f.path contains '/thumbs/' %}
+        {% assign thumb_index = thumb_index | append: f.name | append: ',' %}
       {% endif %}
-    </figure>
-  {% endfor %}
+    {% endfor %}
+    {% for f in shots %}
+      {% if f.path contains folder %}
+        {% unless f.path contains '/thumbs/' %}
+          {% assign rel = f.path | remove_first: '/' %}
+          {% assign thumb = folder | append: '/thumbs/' | append: f.name %}
+          <figure>
+            <img
+              src="{% if thumb_index contains f.name %}{{ thumb | relative_url }}{% else %}{{ rel | relative_url }}{% endif %}"
+              data-zoomable
+              data-zoom-src="{{ rel | relative_url }}"
+              alt="{{ include.alt | default: page.title }}"
+              loading="lazy"
+            >
+          </figure>
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    {% assign gallery_rows = include.images | strip | newline_to_br | split: '<br />' %}
+    {% for row in gallery_rows %}
+      {% assign entry = row | strip %}
+      {% unless entry == '' %}
+        {% assign parts = entry | split: '|' %}
+        {% assign src = parts[0] | strip %}
+        {% assign caption = parts[1] | strip %}
+        <figure>
+          <img
+            src="{{ src | relative_url }}"
+            data-zoomable
+            alt="{% if caption != blank %}{{ caption }}{% else %}{{ page.title }}{% endif %}"
+            loading="lazy"
+          >
+          {% if caption != blank %}
+            <figcaption>{{ caption }}</figcaption>
+          {% endif %}
+        </figure>
+      {% endunless %}
+    {% endfor %}
+  {% endif %}
 </div>

@@ -10,3 +10,5 @@ Gemfile.lock
 assets/libs/
 node_modules/
 vendor
+# photo drops / archives (force-add if you ever really want one)
+*.zip

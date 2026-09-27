@@ -193,10 +193,20 @@
   }
 
   img {
+    display: block;
     width: 100%;
-    height: 100%;
+    aspect-ratio: 3 / 2;
     object-fit: cover;
     border-radius: 4px;
+    cursor: zoom-in;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  figure:hover img {
+    transform: scale(1.015);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
   }
 
   figcaption {

@@ -42,7 +42,7 @@
             <p class="blog-card-desc">{{ post.description }}</p>
           {% endif %}
           <p class="post-meta">
-            {{ post.date | date: '%b %-d, %Y' }}
+            {% if post.date_display %}{{ post.date_display }}{% else %}{{ post.date | date: '%b %-d, %Y' }}{% endif %}
             {% unless post.categories contains 'travel' %}
               &nbsp;&middot;&nbsp; {{ read_time }} min read
             {% endunless %}
