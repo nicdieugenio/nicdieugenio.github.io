@@ -214,7 +214,8 @@ def arxiv_preprints(query: str, max_results: int = 60) -> list[dict]:
             "sortOrder": "descending",
         })
     )
-    root = ET.fromstring(fetch(url, accept="application/atom+xml"))
+    # arXiv rejects a narrow Accept header with HTTP 406; it serves Atom regardless.
+    root = ET.fromstring(fetch(url, accept="*/*"))
 
     results = []
     for entry in root.findall("a:entry", ARXIV_NS):
@@ -360,7 +361,15 @@ def main() -> int:
 
     if not args.no_arxiv:
         print("\nquerying arXiv ...")
-        for preprint in arxiv_preprints(ARXIV_AUTHOR_QUERY):
+        try:
+            preprints = arxiv_preprints(ARXIV_AUTHOR_QUERY)
+        except Exception as error:
+            # arXiv's API sits behind bot protection and intermittently answers
+            # 406 to any uncached query. That must not sink the whole run: the
+            # ORCID results above are still worth committing.
+            print(f"  ! arXiv unavailable, skipping preprints ({error})", file=sys.stderr)
+            preprints = []
+        for preprint in preprints:
             if already_present(preprint):
                 continue
             key = make_key(preprint, used_keys)
