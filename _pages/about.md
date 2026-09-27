@@ -25,10 +25,10 @@ My research addresses the atomistic modeling of Rare-Earth Barium Copper Oxide s
 <style>
   .profile img {
     width: 100% !important; /* Makes image take up the full column width */
-    max-width: 400px !important; /* Adjust this number to your liking */
+    max-width: 600px !important; /* Adjust this number to your liking */
   }
   .profile {
-    width: 45% !important; /* Increases the size of the container itself */
+    width: 55% !important; /* Increases the size of the container itself */
   }
 </style>
 
